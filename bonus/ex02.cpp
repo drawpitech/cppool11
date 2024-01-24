@@ -1,21 +1,6 @@
-#include <iostream>
 #include <string>
-#include <utility>
 
 #include "../UniquePointer.hpp"
-
-class TestObject : public IObject {
-   public:
-    TestObject(std::string name) : _name(std::move(name)) {
-        std::cout << _name << " is alive\n";
-    }
-    ~TestObject() override { std::cout << _name << " is dead\n"; }
-
-    void touch() override { std::cout << _name << " is touched\n"; }
-
-   private:
-    std::string _name;
-};
 
 int main() {
     UniquePointer ptr1;

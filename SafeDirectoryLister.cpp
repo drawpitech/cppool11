@@ -34,7 +34,7 @@ std::string SafeDirectoryLister::get() {
     if (_dir == nullptr)
         return "";
     struct dirent *ent = readdir(_dir);
-    if (ent == nullptr || (char *)ent->d_name == nullptr)
+    if (ent == nullptr)
         throw IDirectoryLister::NoMoreFileException();
     if (ent->d_name[0] == '.' && !_hidden)
         return get();

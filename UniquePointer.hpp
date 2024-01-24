@@ -13,6 +13,7 @@ class UniquePointer {
    public:
     UniquePointer();
     UniquePointer(IObject *ptr);
+    UniquePointer(const UniquePointer &other) = delete;
 
     ~UniquePointer();
 
@@ -22,6 +23,7 @@ class UniquePointer {
     IObject *operator->() const;
     IObject &operator*() const;
     UniquePointer &operator=(IObject *ptr);
+    UniquePointer &operator=(UniquePointer &other) = delete;
 
    private:
     IObject *_ptr = nullptr;

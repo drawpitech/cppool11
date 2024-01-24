@@ -27,7 +27,7 @@ bool DirectoryLister::open(const std::string &path, bool hidden) {
     _dir = opendir(path.c_str());
     if (_dir != nullptr)
         return true;
-    perror("DirectoryLister");
+    perror(path.c_str());
     return false;
 }
 

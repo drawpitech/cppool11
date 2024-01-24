@@ -26,7 +26,7 @@ bool SafeDirectoryLister::open(const std::string &path, bool hidden) {
     _hidden = hidden;
     _dir = opendir(path.c_str());
     if (_dir == nullptr)
-        throw OpenFailureException();
+        throw IDirectoryLister::OpenFailureException();
     return true;
 }
 
@@ -35,7 +35,7 @@ std::string SafeDirectoryLister::get() {
         return "";
     struct dirent *ent = readdir(_dir);
     if (ent == nullptr || (char *)ent->d_name == nullptr)
-        throw NoMoreFileException();
+        throw IDirectoryLister::NoMoreFileException();
     if (ent->d_name[0] == '.' && !_hidden)
         return get();
     return (char *)ent->d_name;

@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <iostream>
+
 #include "IObject.hpp"
 
 class SharedPointer {
@@ -29,7 +31,7 @@ class SharedPointer {
 
    private:
     IObject *_ptr = nullptr;
-    size_t *_count = nullptr;
+    std::size_t *_count = nullptr;
 
     void incrementCount();
     void decrementCount();

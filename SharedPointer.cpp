@@ -30,7 +30,7 @@ void SharedPointer::reset(IObject *ptr) noexcept {
     }
 }
 
-size_t SharedPointer::use_count() const { return (_count != nullptr) ? *_count : 0; }
+std::size_t SharedPointer::use_count() const { return (_count != nullptr) ? *_count : 0; }
 
 IObject *SharedPointer::operator->() const { return _ptr; }
 IObject &SharedPointer::operator*() const { return *_ptr; }
@@ -50,7 +50,7 @@ SharedPointer &SharedPointer::operator=(const SharedPointer &other) {
 
 void SharedPointer::incrementCount() {
     if (_count == nullptr)
-        _count = new size_t(1);
+        _count = new std::size_t(1);
     else
         *_count += 1;
 }

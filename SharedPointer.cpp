@@ -9,10 +9,10 @@
 
 #include <utility>
 
-SharedPointer::SharedPointer() { incrementCount(); }
+SharedPointer::SharedPointer() = default;
 SharedPointer::SharedPointer(IObject *ptr) : _ptr(ptr) { incrementCount(); }
 SharedPointer::SharedPointer(const SharedPointer &other)
-    : _count(other._count) {
+    : _ptr(other._ptr), _count(other._count) {
     incrementCount();
 }
 
@@ -24,20 +24,20 @@ void SharedPointer::swap(SharedPointer &other) noexcept {
 }
 void SharedPointer::reset(IObject *ptr) noexcept {
     decrementCount();
-    if (ptr != nullptr) {
-        incrementCount();
-        _ptr = ptr;
-    }
+    _ptr = ptr;
+    incrementCount();
 }
 
-std::size_t SharedPointer::use_count() const { return (_count != nullptr) ? *_count : 0; }
+std::size_t SharedPointer::use_count() const {
+    return (_count != nullptr) ? *_count : 0;
+}
 
 IObject *SharedPointer::operator->() const { return _ptr; }
 IObject &SharedPointer::operator*() const { return *_ptr; }
 SharedPointer &SharedPointer::operator=(IObject *ptr) {
     decrementCount();
-    incrementCount();
     _ptr = ptr;
+    incrementCount();
     return *this;
 }
 SharedPointer &SharedPointer::operator=(const SharedPointer &other) {
@@ -49,6 +49,8 @@ SharedPointer &SharedPointer::operator=(const SharedPointer &other) {
 }
 
 void SharedPointer::incrementCount() {
+    if (_ptr == nullptr)
+        return;
     if (_count == nullptr)
         _count = new std::size_t(1);
     else

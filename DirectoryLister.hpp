@@ -11,7 +11,8 @@
 
 #include "IDirectoryLister.hpp"
 
-class DirectoryLister : public IDirectoryLister {
+class DirectoryLister : public IDirectoryLister
+{
    public:
     DirectoryLister();
     DirectoryLister(const std::string &path, bool hidden);

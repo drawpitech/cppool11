@@ -11,16 +11,19 @@
 
 DirectoryLister::DirectoryLister() = default;
 
-DirectoryLister::DirectoryLister(const std::string &path, bool hidden) {
+DirectoryLister::DirectoryLister(const std::string &path, bool hidden)
+{
     open(path, hidden);
 }
 
-DirectoryLister::~DirectoryLister() {
+DirectoryLister::~DirectoryLister()
+{
     if (_dir != nullptr)
         closedir(_dir);
 }
 
-bool DirectoryLister::open(const std::string &path, bool hidden) {
+bool DirectoryLister::open(const std::string &path, bool hidden)
+{
     if (_dir != nullptr)
         closedir(_dir);
     _hidden = hidden;
@@ -31,7 +34,8 @@ bool DirectoryLister::open(const std::string &path, bool hidden) {
     return false;
 }
 
-std::string DirectoryLister::get() {
+std::string DirectoryLister::get()
+{
     if (_dir == nullptr)
         return "";
     struct dirent *ent = readdir(_dir);

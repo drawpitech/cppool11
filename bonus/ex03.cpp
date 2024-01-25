@@ -1,12 +1,15 @@
-#include "../List.hpp"
 #include <iostream>
 
-void touch(IObject* object) {
+#include "../List.hpp"
+
+void touch(IObject* object)
+{
     if (object != nullptr)
         object->touch();
 }
 
-int main() {
+int main()
+{
     try {
         List list;
         list.pushBack(new TestObject("Kermit"));

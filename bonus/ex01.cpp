@@ -2,7 +2,8 @@
 
 #include "../SafeDirectoryLister.hpp"
 
-void myLs(const std::string &directory) {
+void myLs(const std::string &directory)
+{
     try {
         SafeDirectoryLister dl(directory, false);
         std::cout << directory << ": " << std::endl;
@@ -13,7 +14,8 @@ void myLs(const std::string &directory) {
     }
     throw std::runtime_error("should not happen");
 }
-int main(void) {
+int main(void)
+{
     try {
         myLs("./");
         myLs("./not_exist/");

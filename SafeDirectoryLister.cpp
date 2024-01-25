@@ -11,16 +11,19 @@
 
 SafeDirectoryLister::SafeDirectoryLister() = default;
 
-SafeDirectoryLister::SafeDirectoryLister(const std::string &path, bool hidden) {
+SafeDirectoryLister::SafeDirectoryLister(const std::string &path, bool hidden)
+{
     open(path, hidden);
 }
 
-SafeDirectoryLister::~SafeDirectoryLister() {
+SafeDirectoryLister::~SafeDirectoryLister()
+{
     if (_dir != nullptr)
         closedir(_dir);
 }
 
-bool SafeDirectoryLister::open(const std::string &path, bool hidden) {
+bool SafeDirectoryLister::open(const std::string &path, bool hidden)
+{
     if (_dir != nullptr)
         closedir(_dir);
     _hidden = hidden;
@@ -30,7 +33,8 @@ bool SafeDirectoryLister::open(const std::string &path, bool hidden) {
     return true;
 }
 
-std::string SafeDirectoryLister::get() {
+std::string SafeDirectoryLister::get()
+{
     if (_dir == nullptr)
         return "";
     struct dirent *ent = readdir(_dir);

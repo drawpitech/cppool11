@@ -11,7 +11,8 @@
 
 #include "IDirectoryLister.hpp"
 
-class SafeDirectoryLister : public IDirectoryLister {
+class SafeDirectoryLister : public IDirectoryLister
+{
    public:
     SafeDirectoryLister();
     SafeDirectoryLister(const std::string &path, bool hidden);

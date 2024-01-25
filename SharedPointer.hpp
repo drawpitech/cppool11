@@ -11,7 +11,8 @@
 
 #include "IObject.hpp"
 
-class SharedPointer {
+class SharedPointer
+{
    public:
     SharedPointer();
     SharedPointer(IObject *ptr);

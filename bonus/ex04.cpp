@@ -2,12 +2,13 @@
 
 #include "../SharedPointer.hpp"
 
-int main() {
+int main()
+{
     SharedPointer ptr1;
     SharedPointer ptr2(new TestObject("O'Neill"));
     SharedPointer ptr3(ptr2);
     ptr1 = ptr3;
-    ptr2 -> touch();
+    ptr2->touch();
     std::cout << ptr1.use_count() << std::endl;
     ptr1.reset(new TestObject("Carter"));
     std::cout << ptr1.use_count() << std::endl;

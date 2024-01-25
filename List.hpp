@@ -11,7 +11,8 @@
 
 #include "IObject.hpp"
 
-struct List {
+struct List
+{
    public:
     ~List();
 
@@ -28,8 +29,9 @@ struct List {
     void clear();
     void forEach(void (*function)(IObject*));
 
-    class InvalidOperationException : public std::exception {};
+    class InvalidOperationException : public std::exception
+    {};
 
    private:
-    std::vector<IObject *> _content;
+    std::vector<IObject*> _content;
 };

@@ -2,7 +2,8 @@
 
 #include "../DirectoryLister.hpp"
 
-int main() {
+int main()
+{
     DirectoryLister dl("./", true);
     for (std::string file = dl.get(); !file.empty(); file = dl.get())
         std::cout << file << std::endl;

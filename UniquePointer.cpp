@@ -12,19 +12,31 @@
 UniquePointer::UniquePointer() = default;
 UniquePointer::UniquePointer(IObject *ptr) : _ptr(ptr) {}
 
-UniquePointer::~UniquePointer() { delete _ptr; }
+UniquePointer::~UniquePointer()
+{
+    delete _ptr;
+}
 
-void UniquePointer::swap(UniquePointer &other) noexcept {
+void UniquePointer::swap(UniquePointer &other) noexcept
+{
     std::swap(_ptr, other._ptr);
 }
-void UniquePointer::reset(IObject *ptr) noexcept {
+void UniquePointer::reset(IObject *ptr) noexcept
+{
     delete _ptr;
     _ptr = ptr;
 }
 
-IObject *UniquePointer::operator->() const { return _ptr; }
-IObject &UniquePointer::operator*() const { return *_ptr; }
-UniquePointer &UniquePointer::operator=(IObject *ptr) {
+IObject *UniquePointer::operator->() const
+{
+    return _ptr;
+}
+IObject &UniquePointer::operator*() const
+{
+    return *_ptr;
+}
+UniquePointer &UniquePointer::operator=(IObject *ptr)
+{
     delete _ptr;
     _ptr = ptr;
     return *this;

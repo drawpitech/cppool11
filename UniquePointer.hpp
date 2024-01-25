@@ -9,7 +9,8 @@
 
 #include "IObject.hpp"
 
-class UniquePointer {
+class UniquePointer
+{
    public:
     UniquePointer();
     UniquePointer(IObject *ptr);
